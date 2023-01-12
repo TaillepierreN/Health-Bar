@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textDisplay: {fileID: 768820558}
-  _player: {fileID: 342813461}
-  _hpBar: {fileID: 496285051}
+  _playerScript: {fileID: 342813462}
+  _healthSlider: {fileID: 496285053}
 --- !u!114 &188571222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textDisplay: {fileID: 13672166}
-  _ally: {fileID: 445217666}
-  _hpBar: {fileID: 671066654}
+  _allyScript: {fileID: 445217667}
+  _healthSlider: {fileID: 671066655}
 --- !u!1 &193248555
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +485,6 @@ GameObject:
   - component: {fileID: 193248558}
   - component: {fileID: 193248557}
   - component: {fileID: 193248556}
-  - component: {fileID: 193248561}
   - component: {fileID: 193248562}
   m_Layer: 0
   m_Name: Bomb
@@ -515,7 +514,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193248555}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -585,22 +584,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &193248561
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193248555}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!114 &193248562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +728,7 @@ GameObject:
   - component: {fileID: 342813463}
   - component: {fileID: 342813462}
   - component: {fileID: 342813467}
+  - component: {fileID: 342813468}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -856,6 +840,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8da0c976e728b4d857878e88ea7a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &342813468
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342813461}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &387560318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,9 +1060,10 @@ GameObject:
   - component: {fileID: 445217669}
   - component: {fileID: 445217668}
   - component: {fileID: 445217667}
+  - component: {fileID: 445217672}
   m_Layer: 0
   m_Name: Ally
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   _followDistance: 3
   _player: {fileID: 342813461}
   _displayHealth: {fileID: 188571220}
+  speed: 5
 --- !u!136 &445217668
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1162,6 +1164,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &445217672
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445217666}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &496285051
 GameObject:
   m_ObjectHideFlags: 0

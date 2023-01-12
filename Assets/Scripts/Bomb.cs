@@ -18,17 +18,23 @@ public class Bomb : MonoBehaviour
     {
 
     }
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Player>().GetHurt(damage);
-            Destroy(this.gameObject);
+            Player player = other.gameObject.GetComponent<Player>();
+            player.GetHurt(damage);
+            // avec propriété
+            //player.Health -= damage;
+            
+            Destroy(gameObject);
         }
-        else
+        else if (other.gameObject.CompareTag("Ally"))
         {
-            other.gameObject.GetComponent<Ally>().GetHurt(damage);
-            Destroy(this.gameObject);
+            Ally ally = other.gameObject.GetComponent<Ally>();
+            ally.GetHurt(damage);
+
+            Destroy(gameObject);
         }
 
     }
