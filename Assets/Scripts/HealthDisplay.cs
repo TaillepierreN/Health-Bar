@@ -7,21 +7,31 @@ using TMPro;
 public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] TMP_Text _textDisplay;
-    [SerializeField] GameObject _player, _hpBar;
     //public IntVariable PlayerHP;
-    Player _playerScript;
-    Slider _healthSlider;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Player _playerScript;
+    [SerializeField] Slider _healthSlider;
+
+    private float lastHP;
+
+    private void Awake()
     {
-        _playerScript = _player.GetComponent<Player>();
-        _healthSlider = _hpBar.GetComponent<Slider>();
+        lastHP = _playerScript.Health;
+    }
+
+    private void Start()
+    {
+        _textDisplay.text = "Player HP = " + _playerScript.Health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _textDisplay.text = "Player HP = " + _playerScript.Health;
+        //les hp ont changé à cette frame    
+        if (_playerScript.Health != lastHP)
+        {
+            _textDisplay.text = "Player HP = " + _playerScript.Health;
+            lastHP = _playerScript.Health;
+        }
     }
     public void SetMaxHealth(int maxHealth)
     {
