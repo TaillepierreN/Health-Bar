@@ -23,12 +23,12 @@ public class Bomb : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Player>().GetHurt(damage);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
             other.gameObject.GetComponent<Ally>().GetHurt(damage);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
 
     }

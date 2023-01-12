@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-public class HealthDisplay : MonoBehaviour
+public class HealthBarAlly : MonoBehaviour
 {
     [SerializeField] TMP_Text _textDisplay;
-    [SerializeField] GameObject _player, _hpBar;
-    Player _playerScript;
+    [SerializeField] GameObject _ally, _hpBar;
+    Ally _allyScript;
     Slider _healthSlider;
     // Start is called before the first frame update
     void Start()
     {
-        _playerScript = _player.GetComponent<Player>();
+        _allyScript = _ally.GetComponent<Ally>();
         _healthSlider = _hpBar.GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _textDisplay.text = "Player HP = " + _playerScript.Health;
+        _textDisplay.text = "Ally HP = " + _allyScript.Health;
     }
     public void SetMaxHealth(int maxHealth)
     {
