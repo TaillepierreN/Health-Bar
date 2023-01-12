@@ -6,7 +6,6 @@ using TMPro;
 public class HealthBarAlly : MonoBehaviour
 {
     [SerializeField] TMP_Text _textDisplay;
-    //public IntVariable PlayerHP;
     [SerializeField] Ally _allyScript;
     [SerializeField] Slider _healthSlider;
 
@@ -21,8 +20,6 @@ public class HealthBarAlly : MonoBehaviour
     {
         _textDisplay.text = "Ally HP = " + _allyScript.Health;
     }
-
-    // Update is called once per frame
     void Update()
     {
         //les hp ont changé à cette frame    

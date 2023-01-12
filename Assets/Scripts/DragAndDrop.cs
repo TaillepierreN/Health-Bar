@@ -21,7 +21,7 @@ public class DragAndDrop : MonoBehaviour
         // On calcule l'offset pour éviter que l'objet ne snap au centre de la souris
         offset = transform.position - mouseWorldPos;
 
-        //mousePos = Input.mousePosition - GetMousePosition();
+        //mousePos = Input.mousePosition - GetObjectPositionOnScreen();
     }
 
     private void OnMouseDrag()
@@ -46,7 +46,7 @@ public class DragAndDrop : MonoBehaviour
         return mouseWorldPos;
     }
 
-    //Vector3 GetMousePosition()
+    //Vector3 GetObjectPositionOnScreen()
     //{
         //return _camera.WorldToScreenPoint(transform.position);
     //}

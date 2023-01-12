@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
         //}
     //}
 
-
     // exemple d'auto-propriété
     //public int AutoHealth {get;set;}
 
@@ -31,10 +30,10 @@ public class Player : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+    //{
         //_displayHealth.GetComponent<HealthDisplay>().SetMaxHealth(initialHealth);
-    }
+    //}
 
     // Update is called once per frame
     public void GetHurt(int damage)
