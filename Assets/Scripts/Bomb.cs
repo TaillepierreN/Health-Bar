@@ -17,12 +17,13 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    private void OnMouseDown() {
-        mousePos= Input.mousePosition - GetMousePosition();
+    private void OnMouseDown()
+    {
+        mousePos = Input.mousePosition - GetMousePosition();
     }
-    private void OnMouseDrag() 
+    private void OnMouseDrag()
     {
         transform.position = _camera.ScreenToWorldPoint(Input.mousePosition - mousePos);
     }
@@ -30,11 +31,18 @@ public class Bomb : MonoBehaviour
     {
         return _camera.WorldToScreenPoint(transform.position);
     }
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Player"))
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Player>().GetHurt(damage);
             Destroy(gameObject);
         }
+        else
+        {
+            other.gameObject.GetComponent<Ally>().GetHurt(damage);
+            Destroy(gameObject);
+        }
+
     }
 }
