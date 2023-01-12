@@ -30,4 +30,11 @@ public class Bomb : MonoBehaviour
     {
         return _camera.WorldToScreenPoint(transform.position);
     }
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Player>().GetHurt(damage);
+            Destroy(gameObject);
+        }
+    }
 }
