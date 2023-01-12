@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] int initialHealth = 100;
-    [SerializeField] GameObject _displayHealth;
+    //[SerializeField] GameObject _displayHealth;
     [SerializeField] IntVariable health;
     public int Health { get { return health.Value; } private set { } }
 
@@ -33,19 +33,15 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _displayHealth.GetComponent<HealthDisplay>().SetMaxHealth(initialHealth);
+        //_displayHealth.GetComponent<HealthDisplay>().SetMaxHealth(initialHealth);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void GetHurt(int damage)
     {
         health.Value = health.Value - damage;
         if (health.Value <= 0) health.Value = 0;
-        _displayHealth.GetComponent<HealthDisplay>().SetHealth(health.Value);
+        //_displayHealth.GetComponent<HealthDisplay>().SetHealth(health.Value);
 
     }
 

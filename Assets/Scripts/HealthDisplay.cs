@@ -6,41 +6,58 @@ using TMPro;
 
 public class HealthDisplay : MonoBehaviour
 {
-    [SerializeField] TMP_Text _textDisplay;
+    [SerializeField] TMP_Text _textDisplayPlayer;
+    [SerializeField] TMP_Text _textDisplayAlly;
     //public IntVariable PlayerHP;
-    [SerializeField] Player _playerScript;
-    [SerializeField] Slider _healthSlider;
+    [SerializeField] Slider _healthSliderPlayer;
+    [SerializeField] Slider _healthSliderAlly;
     public IntVariable PlayerHP;
+    public IntVariable AllyHP;
 
-    private float lastHP;
+    private float lastPlayerHP;
+    private float lastAllyHP;
 
     private void Awake()
     {
-        lastHP = _playerScript.Health;
+        lastPlayerHP = PlayerHP.Value;
+        lastAllyHP = AllyHP.Value;
+
     }
 
     private void Start()
     {
-        _textDisplay.text = "Player HP = " + _playerScript.Health;
+        _textDisplayPlayer.text = "Player HP = " + PlayerHP.Value;
+        _textDisplayAlly.text = "Ally HP = " + AllyHP.Value;
+        _healthSliderPlayer.maxValue = PlayerHP.Value;
+        _healthSliderPlayer.value = PlayerHP.Value;
+        _healthSliderAlly.maxValue = AllyHP.Value;
+        _healthSliderAlly.value = AllyHP.Value;
     }
 
     // Update is called once per frame
     void Update()
     {
         //les hp ont changé à cette frame    
-        if (_playerScript.Health != lastHP)
+        if (PlayerHP.Value != lastPlayerHP)
         {
-            _textDisplay.text = "Player HP = " + PlayerHP.Value;
-            lastHP = _playerScript.Health;
+            _textDisplayPlayer.text = "Player HP = " + PlayerHP.Value;
+            _healthSliderPlayer.value = PlayerHP.Value;
+            lastPlayerHP = PlayerHP.Value;
+        }
+        if (AllyHP.Value != lastAllyHP)
+        {
+            _textDisplayAlly.text = "Ally HP = " + AllyHP.Value;
+            _healthSliderAlly.value = AllyHP.Value;
+            lastAllyHP = AllyHP.Value;
         }
     }
-    public void SetMaxHealth(int maxHealth)
-    {
-        _healthSlider.maxValue = maxHealth;
-        _healthSlider.value = maxHealth;
-    }
-    public void SetHealth(int health)
-    {
-        _healthSlider.value = health;
-    }
+    // public void SetMaxHealth(int maxHealth)
+    // {
+    //     _healthSlider.maxValue = maxHealth;
+    //     _healthSlider.value = maxHealth;
+    // }
+    // public void SetHealth(int health)
+    // {
+    //     _healthSlider.value = health;
+    // }
 }

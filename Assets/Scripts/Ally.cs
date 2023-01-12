@@ -7,17 +7,18 @@ public class Ally : MonoBehaviour
     [SerializeField] int initialHealth = 100;
     [SerializeField] int _followDistance;
     [SerializeField] GameObject _player;
-    [SerializeField]GameObject _displayHealth;
-    [SerializeField] float speed = 5f;
-    int health;
 
-    public int Health { get { return health; } private set { } }
+    [SerializeField] float speed = 5f;
+    [SerializeField] IntVariable health;
+
+
+    public int Health { get { return health.Value; } private set { } }
 
     // Start is called before the first frame update
     void Start()
     {
-        health = initialHealth;
-        _displayHealth.GetComponent<HealthBarAlly>().SetMaxHealth(initialHealth);
+        health.Value = initialHealth;
+        //_displayHealth.GetComponent<HealthBarAlly>().SetMaxHealth(initialHealth);
 
     }
 
@@ -40,8 +41,8 @@ public class Ally : MonoBehaviour
     }
     public void GetHurt(int damage)
     {
-        health = health - damage;
-        _displayHealth.GetComponent<HealthBarAlly>().SetHealth(health);
+        health.Value = health.Value - damage;
+       // _displayHealth.GetComponent<HealthBarAlly>().SetHealth(health);
 
     }
 }
