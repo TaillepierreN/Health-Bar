@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] int initialHealth = 100;
     [SerializeField] GameObject _displayHealth;
-    int health;
-    public int Health { get { return health; } private set { } }
+    [SerializeField] IntVariable health;
+    public int Health { get { return health.Value; } private set { } }
 
     // Version propriété modifiable depuis l'extérieur
     //public int Health { 
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         // Ici on met tout ce qui est initialisation de variables interne à la classe 
-        health = initialHealth;
+        health.Value = initialHealth;
     }
 
     // Start is called before the first frame update
@@ -43,9 +43,9 @@ public class Player : MonoBehaviour
     }
     public void GetHurt(int damage)
     {
-        health = health - damage;
-        if (health <= 0) health = 0;
-        _displayHealth.GetComponent<HealthDisplay>().SetHealth(health);
+        health.Value = health.Value - damage;
+        if (health.Value <= 0) health.Value = 0;
+        _displayHealth.GetComponent<HealthDisplay>().SetHealth(health.Value);
 
     }
 
