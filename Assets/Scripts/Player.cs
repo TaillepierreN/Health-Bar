@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]int initialHealth = 100;
     int health;
-    public int Health {get {return health;}}
+    public int Health {get {return health;} private set{}}
     // Start is called before the first frame update
     void Start()
     {
