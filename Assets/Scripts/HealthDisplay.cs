@@ -10,6 +10,7 @@ public class HealthDisplay : MonoBehaviour
     //public IntVariable PlayerHP;
     [SerializeField] Player _playerScript;
     [SerializeField] Slider _healthSlider;
+    public IntVariable PlayerHP;
 
     private float lastHP;
 
@@ -29,7 +30,7 @@ public class HealthDisplay : MonoBehaviour
         //les hp ont changé à cette frame    
         if (_playerScript.Health != lastHP)
         {
-            _textDisplay.text = "Player HP = " + _playerScript.Health;
+            _textDisplay.text = "Player HP = " + PlayerHP.Value;
             lastHP = _playerScript.Health;
         }
     }
