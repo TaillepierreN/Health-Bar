@@ -347,7 +347,6 @@ GameObject:
   - component: {fileID: 188571223}
   - component: {fileID: 188571222}
   - component: {fileID: 188571221}
-  - component: {fileID: 188571226}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -367,9 +366,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4efbd5906e5fd46824222cfb486f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textDisplay: {fileID: 768820558}
-  _playerScript: {fileID: 342813462}
-  _healthSlider: {fileID: 496285053}
+  _textDisplayPlayer: {fileID: 768820558}
+  _textDisplayAlly: {fileID: 13672166}
+  _healthSliderPlayer: {fileID: 496285053}
+  _healthSliderAlly: {fileID: 671066655}
+  PlayerHP: {fileID: 11400000, guid: 08e1a0f9f6da1cf4d83c36306cb7fff1, type: 2}
+  AllyHP: {fileID: 11400000, guid: 80887f8c0c243cc459703dcb286398ef, type: 2}
 --- !u!114 &188571222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,21 +459,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &188571226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188571220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b34500309b2748bd5585c6bcc2087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textDisplay: {fileID: 13672166}
-  _allyScript: {fileID: 445217667}
-  _healthSlider: {fileID: 671066655}
 --- !u!1 &193248555
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 100
-  _displayHealth: {fileID: 188571220}
+  health: {fileID: 11400000, guid: 08e1a0f9f6da1cf4d83c36306cb7fff1, type: 2}
 --- !u!65 &342813463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1083,8 +1070,8 @@ MonoBehaviour:
   initialHealth: 100
   _followDistance: 3
   _player: {fileID: 342813461}
-  _displayHealth: {fileID: 188571220}
   speed: 5
+  health: {fileID: 11400000, guid: 80887f8c0c243cc459703dcb286398ef, type: 2}
 --- !u!136 &445217668
 CapsuleCollider:
   m_ObjectHideFlags: 0
