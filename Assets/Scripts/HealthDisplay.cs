@@ -8,6 +8,7 @@ public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] TMP_Text _textDisplay;
     [SerializeField] GameObject _player, _hpBar;
+    //public IntVariable PlayerHP;
     Player _playerScript;
     Slider _healthSlider;
     // Start is called before the first frame update
