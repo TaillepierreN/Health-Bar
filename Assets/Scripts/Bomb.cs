@@ -18,24 +18,14 @@ public class Bomb : MonoBehaviour
     {
 
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Character characterToHurt = other.GetComponent<Character>();
+        if (characterToHurt)
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.GetHurt(damage);
-            // avec propriété
-            //player.Health -= damage;
-            
+            characterToHurt.GetHurt(damage);
             Destroy(gameObject);
         }
-        else if (other.gameObject.CompareTag("Ally"))
-        {
-            Ally ally = other.gameObject.GetComponent<Ally>();
-            ally.GetHurt(damage);
-
-            Destroy(gameObject);
-        }
-
     }
 }

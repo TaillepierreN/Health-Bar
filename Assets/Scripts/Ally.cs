@@ -2,24 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ally : MonoBehaviour
+public class Ally : Character 
 {
-    [SerializeField] int initialHealth = 100;
     [SerializeField] int _followDistance;
     [SerializeField] GameObject _player;
-    [SerializeField]GameObject _displayHealth;
     [SerializeField] float speed = 5f;
-    int health;
-
-    public int Health { get { return health; } private set { } }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        health = initialHealth;
-        _displayHealth.GetComponent<HealthBarAlly>().SetMaxHealth(initialHealth);
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -37,11 +24,5 @@ public class Ally : MonoBehaviour
         // {
         //     transform.position -=transform.forward * 5 * Time.deltaTime;
         // }
-    }
-    public void GetHurt(int damage)
-    {
-        health = health - damage;
-        _displayHealth.GetComponent<HealthBarAlly>().SetHealth(health);
-
     }
 }

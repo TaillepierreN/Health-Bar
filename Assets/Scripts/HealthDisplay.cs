@@ -8,31 +8,42 @@ public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] TMP_Text _textDisplay;
     //public IntVariable PlayerHP;
-    [SerializeField] Player _playerScript;
     [SerializeField] Slider _healthSlider;
+    [SerializeField] IntVariable hp;
 
     private float lastHP;
 
     private void Awake()
     {
-        lastHP = _playerScript.Health;
+        lastHP = hp.Value;
     }
 
     private void Start()
     {
-        _textDisplay.text = "Player HP = " + _playerScript.Health;
+        UpdateHealthDisplay();
     }
 
     // Update is called once per frame
     void Update()
     {
         //les hp ont changé à cette frame    
-        if (_playerScript.Health != lastHP)
+        if (hp.Value != lastHP)
         {
-            _textDisplay.text = "Player HP = " + _playerScript.Health;
-            lastHP = _playerScript.Health;
+            UpdateHealthDisplay();
+
+            // on retient la dernière valeur des hp pour détecter un changement de hp
+            lastHP = hp.Value;
         }
     }
+
+    private void UpdateHealthDisplay()
+    {
+        // met à jour les hp au format texte
+        _textDisplay.text = hp.Value.ToString();
+        // met à jour les hp dans la barre de vie
+        _healthSlider.value = hp.Value;
+    }
+
     public void SetMaxHealth(int maxHealth)
     {
         _healthSlider.maxValue = maxHealth;
